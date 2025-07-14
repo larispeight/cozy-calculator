@@ -1,0 +1,80 @@
+/* general & body config */
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding:18px;
+}
+
+div.background {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+        border: dashed red 1px;
+    padding: 1em;
+    margin: 1em;
+    width: 600px;
+    align-items: center;
+}
+
+/* visor and name */
+
+h1#name{
+    font-size: medium;
+    align-self: flex-start;
+    border: brown 1px solid;
+}
+
+div.visor {
+        border: solid purple 1px;
+    width: 200px;
+    height: 50px;
+    flex-grow:0;
+}
+
+/* corpo of calculator */
+
+div.upper-row {
+    border: solid red 1px;
+}
+
+div.bottom-row {
+    border: red solid 2px;
+    display: flex;
+}
+
+div.left-column{
+        border:white solid 1px;
+    align-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+/* number row */
+div.first {
+    border: red solid 1px;
+}
+
+div.second {
+    border: red solid 1px;
+}
+
+div.third {
+    border: red solid 1px;
+}
+
+div.forth {
+    border: red solid 1px;
+}
+
+/* right column */
+
+div.operators{
+    display: flex;
+    flex-direction: column;
+    border: white solid 1px;
+    align-content: flex-start;
+    max-width: min-content;
+}
