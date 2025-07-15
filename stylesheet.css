@@ -130,6 +130,32 @@ div.operators{
     justify-content: space-between;
 }
 
+
+/* style */
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* background */
+div.background {
+    background-color: #ffecec;
+    border-radius: 1em;
+    box-shadow: 0 10px 26px 0 #3F3F5F;
+}
+
+/* visor */
+div.visor {
+    color:#1b1b27;
+    background-color: #fdebeb;
+    border-radius: 1em;
+    box-shadow: 1px 1px 5px #3F3F5F;
+    cursor: not-allowed;
+    font-weight: bold;
+    /* scrollbar-width: thin; */
+    scrollbar-color: #ba9eb5 transparent;
+}
+
 /* buttons */
 button {
     border-radius: 2em;
