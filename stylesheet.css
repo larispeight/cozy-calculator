@@ -3,14 +3,14 @@
 body{
     display: flex;
     justify-content: center;
-            border: dashed rgb(0, 38, 255) 1px;
+            border: dashed blue 1px;
 }
 
 button {
     padding:18px;
     display:block;
             border: solid purple 1px;
-flex:1 1 auto;
+    flex:1 1 auto;
     min-width:40px;
     min-height: 40px;
     text-align: center;
@@ -47,7 +47,6 @@ div.visor {
 
 div.corpo {
         border: solid red 3px;
-
 }
 
 div.upper-row {
