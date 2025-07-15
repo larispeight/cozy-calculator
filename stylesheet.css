@@ -6,7 +6,7 @@
 body{
     display: flex;
     justify-content: center;
-            border: dashed blue 1px;
+            /* border: dashed blue 1px; */
     padding-left:3em;
     padding-right:3em;
 }
@@ -14,23 +14,25 @@ body{
 button {
     padding:18px;
     display:block;
-            border: solid purple 1px;
+            /* border: solid purple 1px; */
     flex:1;
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 50px;
+    min-height: 50px;
     text-align: center;
     line-height: 0px;
 }
 
 div.background {
-    background-color: pink;
+    /* background-color: #ffcccc; */
     display: flex;
     flex:1;
     max-width: fit-content;
     flex-direction: column;
-        border: dashed red 1px;
+        /* border: dashed red 1px; */
+    margin-top: 2em;
     padding: 2em;
     align-items: center;
+    gap: 24px;
 }
 
 /* visor and name */
@@ -38,22 +40,32 @@ div.background {
 h1#name{
     font-size: xx-small;
     flex:1;
-        border: purple 1px solid;
+    text-align: center;
+    align-content: center;
+    /* border: purple 1px solid; */
 }
 
 div.visor {
-        border: solid purple 1px;
+        /* border: solid purple 1px; */
     min-width: 250px;
     min-height: 50px;
-    max-width: min-content;
+    max-width: 250px;
     flex:1;
-    margin-bottom: 12px;
+    text-align: end;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+div.visor p {
+    padding-left:1em;
+    padding-right:1em;
 }
 
 /* corpo of calculator */
 
 div.corpo {
-        border: solid red 3px;
+        /* border: solid red 3px; */
     display: flex;
     flex-direction: column;
     gap:12px;
@@ -61,20 +73,20 @@ div.corpo {
 }
 
 div.upper-row {
-    border: dashed yellow 2px;
+    /* border: dashed yellow 2px; */
     display: flex;
     gap:12px;
 }
 
 div.bottom-row {
-    border: dashed yellow 2px;
+    /* border: dashed yellow 2px; */
     display: flex;
     gap:12px;
 }
 
 /* left column */
 div.left-column{
-        border:green dashed 1px;
+        /* border:green dashed 1px; */
     align-content: flex-start;
     gap:12px;
     flex:1;
@@ -84,25 +96,25 @@ div.left-column{
 
 /* number row */
 div.first {
-    border: white solid 1px;
+    /* border: white solid 1px; */
     display: flex;
     gap:12px;
 }
 
 div.second {
-    border: white solid 1px;
+    /* border: white solid 1px; */
     display: flex;
     gap:12px;
 }
 
 div.third {
-    border: white solid 1px;
+    /* border: white solid 1px; */
     display: flex;
     gap:12px;
 }
 
 div.forth {
-    border: white solid 1px;
+    /* border: white solid 1px; */
     display: flex;
     gap:12px;
 }
@@ -112,7 +124,7 @@ div.forth {
 div.operators{
     display: flex;
     flex-direction: column;
-    border: green dashed 1px;
+    /* border: green dashed 1px; */
     flex:1;
     gap:12px;
     justify-content: space-between;
