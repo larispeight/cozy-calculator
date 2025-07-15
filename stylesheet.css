@@ -3,10 +3,13 @@
 body{
     display: flex;
     justify-content: center;
+            border: dashed rgb(0, 38, 255) 1px;
 }
 
 button {
     padding:18px;
+    display:block;
+            border: solid purple 1px;
 }
 
 div.background {
@@ -25,48 +28,55 @@ div.background {
 h1#name{
     font-size: medium;
     align-self: flex-start;
-    border: brown 1px solid;
+        border: purple 1px solid;
 }
 
 div.visor {
         border: solid purple 1px;
-    width: 200px;
-    height: 50px;
+    min-width: 200px;
+    min-height: 50px;
     flex-grow:0;
 }
 
 /* corpo of calculator */
 
+div.corpo {
+        border: solid red 3px;
+
+}
+
 div.upper-row {
-    border: solid red 1px;
+    border: dashed yellow 2px;
 }
 
 div.bottom-row {
-    border: red solid 2px;
+    border: dashed yellow 2px;
     display: flex;
 }
 
+/* left column */
 div.left-column{
-        border:white solid 1px;
+        border:green dashed 1px;
     align-content: flex-start;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
 }
+
 /* number row */
 div.first {
-    border: red solid 1px;
+    border: white solid 1px;
 }
 
 div.second {
-    border: red solid 1px;
+    border: white solid 1px;
 }
 
 div.third {
-    border: red solid 1px;
+    border: white solid 1px;
 }
 
 div.forth {
-    border: red solid 1px;
+    border: white solid 1px;
 }
 
 /* right column */
@@ -74,7 +84,7 @@ div.forth {
 div.operators{
     display: flex;
     flex-direction: column;
-    border: white solid 1px;
+    border: green dashed 1px;
     align-content: flex-start;
-    max-width: min-content;
+    /* max-width: min-content; */
 }
