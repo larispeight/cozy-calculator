@@ -1,47 +1,53 @@
+
+/* Layout */
+
 /* general & body config */
 
 body{
     display: flex;
     justify-content: center;
             border: dashed blue 1px;
+    padding-left:3em;
+    padding-right:3em;
 }
 
 button {
     padding:18px;
     display:block;
             border: solid purple 1px;
-    flex:1 1 auto;
-    min-width:40px;
-    min-height: 40px;
+    flex:1;
+    min-width: 60px;
+    min-height: 60px;
     text-align: center;
     line-height: 0px;
-    border-radius: 2em;
 }
 
 div.background {
     background-color: pink;
     display: flex;
+    flex:1;
+    max-width: fit-content;
     flex-direction: column;
         border: dashed red 1px;
-    padding: 1em;
-    margin: 1em;
-    width: 600px;
+    padding: 2em;
     align-items: center;
 }
 
 /* visor and name */
 
 h1#name{
-    font-size: medium;
-    align-self: flex-start;
+    font-size: xx-small;
+    flex:1;
         border: purple 1px solid;
 }
 
 div.visor {
         border: solid purple 1px;
-    min-width: 200px;
+    min-width: 250px;
     min-height: 50px;
-    flex-grow:0;
+    max-width: min-content;
+    flex:1;
+    margin-bottom: 12px;
 }
 
 /* corpo of calculator */
@@ -50,25 +56,27 @@ div.corpo {
         border: solid red 3px;
     display: flex;
     flex-direction: column;
-    gap:1em;
+    gap:12px;
+    flex:1;
 }
 
 div.upper-row {
     border: dashed yellow 2px;
     display: flex;
-    gap:1em;
+    gap:12px;
 }
 
 div.bottom-row {
     border: dashed yellow 2px;
     display: flex;
-    gap: 1em;
+    gap:12px;
 }
 
 /* left column */
 div.left-column{
         border:green dashed 1px;
     align-content: flex-start;
+    gap:12px;
     flex:1;
     display: flex;
     flex-direction: column;
@@ -78,30 +86,25 @@ div.left-column{
 div.first {
     border: white solid 1px;
     display: flex;
-    gap: 1em;
+    gap:12px;
 }
 
 div.second {
     border: white solid 1px;
     display: flex;
-    gap: 1em;
+    gap:12px;
 }
 
 div.third {
     border: white solid 1px;
     display: flex;
-    gap: 1em;
+    gap:12px;
 }
 
 div.forth {
     border: white solid 1px;
     display: flex;
-    gap: 1em;
-}
-
-div.left-column button {
-    min-width: 60px;
-    min-height: 60px;
+    gap:12px;
 }
 
 /* right column */
@@ -110,15 +113,7 @@ div.operators{
     display: flex;
     flex-direction: column;
     border: green dashed 1px;
-    align-content: flex-start;
     flex:1;
-    gap:1em;
-}
-
-div.operators button {
-    flex: 0 1 auto;
-}
-
-div.operators button#add {
-    flex: 1;
+    gap:12px;
+    justify-content: space-between;
 }
