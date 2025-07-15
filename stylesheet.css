@@ -10,6 +10,11 @@ button {
     padding:18px;
     display:block;
             border: solid purple 1px;
+flex:1 1 auto;
+    min-width:40px;
+    min-height: 40px;
+    text-align: center;
+    line-height: 0px;
 }
 
 div.background {
@@ -47,6 +52,7 @@ div.corpo {
 
 div.upper-row {
     border: dashed yellow 2px;
+    display: flex;
 }
 
 div.bottom-row {
@@ -58,25 +64,39 @@ div.bottom-row {
 div.left-column{
         border:green dashed 1px;
     align-content: flex-start;
-    /* display: flex; */
+    flex:1;
+    display: flex;
     flex-direction: column;
 }
 
 /* number row */
 div.first {
     border: white solid 1px;
+    display: flex;
+    gap: 1em;
 }
 
 div.second {
     border: white solid 1px;
+    display: flex;
+    gap: 1em;
 }
 
 div.third {
     border: white solid 1px;
+    display: flex;
+    gap: 1em;
 }
 
 div.forth {
     border: white solid 1px;
+    display: flex;
+    gap: 1em;
+}
+
+div.left-column button {
+    min-width: 60px;
+    min-height: 60px;
 }
 
 /* right column */
@@ -86,5 +106,14 @@ div.operators{
     flex-direction: column;
     border: green dashed 1px;
     align-content: flex-start;
-    /* max-width: min-content; */
+    flex:1;
+    gap:1em;
+}
+
+div.operators button {
+    flex: 0 1 auto;
+}
+
+div.operators button#add {
+    flex: 1;
 }
