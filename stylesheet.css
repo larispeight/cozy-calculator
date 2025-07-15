@@ -129,3 +129,22 @@ div.operators{
     gap:12px;
     justify-content: space-between;
 }
+
+/* buttons */
+button {
+    border-radius: 2em;
+    background-color: #ffcccc;
+    box-shadow: 1px 1px 5px #3F3F5F;
+    border:0;
+    color: #1b1b27;
+    font-weight:medium;
+}
+
+.left-column button {
+    background-color: #e0b8c2;
+}
+
+button#equal {
+    background-color: #ffcccc;
+    color: #1b1b27;    
+}
