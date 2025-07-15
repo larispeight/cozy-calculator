@@ -15,6 +15,7 @@ button {
     min-height: 40px;
     text-align: center;
     line-height: 0px;
+    border-radius: 2em;
 }
 
 div.background {
@@ -47,16 +48,21 @@ div.visor {
 
 div.corpo {
         border: solid red 3px;
+    display: flex;
+    flex-direction: column;
+    gap:1em;
 }
 
 div.upper-row {
     border: dashed yellow 2px;
     display: flex;
+    gap:1em;
 }
 
 div.bottom-row {
     border: dashed yellow 2px;
     display: flex;
+    gap: 1em;
 }
 
 /* left column */
