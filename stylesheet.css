@@ -174,3 +174,20 @@ button#equal {
     background-color: #ffcccc;
     color: #1b1b27;    
 }
+
+/* Pseudo-elements */
+
+
+button:active {
+  background-color: #e0b8c2;
+    box-shadow: 1px 1px 5px #3F3F5F;
+  transform: translateY(5px);
+}
+
+button#equal:active {
+    background-color: #e0b8c2;
+}
+
+.left-column button:active{
+    background-color: #ba9eb5;
+}
