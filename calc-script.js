@@ -7,7 +7,12 @@ let firstOperand = "";
 let operator = "";
 
 // step 1 enter a number + display
-const numberButton= document.querySelectorAll("number");
+
+numberButton.forEach(button =>{
+        button.addEventListener("click", () => {
+            display.textContent += button.innerText;
+        })
+    });
 
 
 // step 2 enter operator
