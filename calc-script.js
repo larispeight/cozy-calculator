@@ -5,6 +5,7 @@ const display = document.querySelector(".visor p")
 const operatorButtons = document.querySelectorAll(".operators button")
 const equalButton = document.querySelector("#equal")
 const cleanButton = document.querySelector("#CLEAN");
+const dotButton = document.querySelector("#dot");
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
@@ -103,10 +104,26 @@ cleanButton.addEventListener("click", () =>{
     display.textContent = "";
 })
 // dividing by 0 = error -- DONE
-// make sure when "++" is clicked doesn't get added up as the function ++
-// after "equal", when clicking a number means "clear"
+// make sure when "++" is clicked doesn't get added up as the function ++ -- DONE
+// after "equal", when clicking a number means "clear" -- DONE
 
 // // extra extra
-// make sure you can only add "." once between numbers
+// make sure you can only add "." once between numbers -- DONE
+dotButton.addEventListener("click", () => {
+    const currentDisplay = display.textContent;
+
+    if (!operator){
+        if (!currentDisplay.includes(".")){
+            display.textContent += ".";
+        }
+    } else {
+        const parts = currentDisplay.split(operator);
+        const secondOperand = parts[1] || "";
+        
+        if (!secondOperand.includes(".")){
+            display.textContent += ".";
+        }
+    }
+})
 // add backspace, as undo last input "delete last number"
 // keyboard support
