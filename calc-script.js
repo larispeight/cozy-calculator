@@ -19,7 +19,7 @@ numberButton.forEach(button =>{
             if (calculationDone){
                 display.textContent= "";
                 calculationDone = false;
-            } //
+            }
 
             display.textContent += button.innerText;
         })
@@ -51,7 +51,11 @@ operatorButtons.forEach(button => {
 
 // step 3 enter second number + display -- DONE
 equalButton.addEventListener("click", () => {
-    secondOperand = display.textContent;
+    if (calculationDone){
+        firstOperand = display.textContent;
+    } else {
+        secondOperand = display.textContent.trim();
+    }
 
     const num1= parseFloat(firstOperand);
     const num2= parseFloat(secondOperand);
@@ -79,6 +83,8 @@ equalButton.addEventListener("click", () => {
     result = Math.round(result * 100) / 100;
     
     display.textContent = result;
+
+    firstOperand= result.toString();
 
     calculationDone = true;
 })
