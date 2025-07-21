@@ -6,6 +6,8 @@ const operatorButtons = document.querySelectorAll(".operators button")
 const equalButton = document.querySelector("#equal")
 const cleanButton = document.querySelector("#CLEAN");
 const dotButton = document.querySelector("#dot");
+const backButton = document.querySelector("#backspace");
+
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
@@ -126,4 +128,15 @@ dotButton.addEventListener("click", () => {
     }
 })
 // add backspace, as undo last input "delete last number"
+backButton.addEventListener("click", () =>{
+    let currentDisplay = display.textContent;
+    let newText = currentDisplay.slice(0,-1);
+
+    display.textContent = newText;
+
+    if(!newText.includes(operator)){
+        operator= "";
+    }
+})
+
 // keyboard support
