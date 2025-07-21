@@ -16,6 +16,15 @@ numberButton.forEach(button =>{
 
 
 // step 2 enter operator
+operatorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        firstOperand = display.textContent;
+        operator = button.innerText;
+        display.textContent = " ";
+    })
+});
+
+
 // step 3 enter second number + display
 // step 4 equal sign closes loop + display final answer
 // step 5 loop operator and number until satisfied
