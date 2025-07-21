@@ -3,8 +3,12 @@
 const numberButton= document.querySelectorAll(".number");
 const display = document.querySelector(".visor p")
 const operatorButtons = document.querySelectorAll(".operators button")
+const equalButton = document.querySelector("#equal")
 let firstOperand = "";
+let secondOperand = "";
 let operator = "";
+let result = "";
+
 
 // step 1 enter a number + display
 
@@ -26,6 +30,26 @@ operatorButtons.forEach(button => {
 
 
 // step 3 enter second number + display
+equalButton.addEventListener("click", () => {
+    secondOperand = display.textContent;
+    const num1= parseFloat(firstOperand);
+    const num2= parseFloat(secondOperand);
+
+    if (operator === "+") {
+        result = num1 + num2;
+    } else if (operator === "-") {
+        result = num1 - num2
+    } else if (operator === "*" || operator === "x") {
+        result = num1 * num2
+    } else if (operator === "/") {
+        if (num2 === 0) {
+            result = alert("Can't divide by 0!")
+        } else {result = num1 / num2}
+    }
+    display.textContent = result;
+
+})
+
 // step 4 equal sign closes loop + display final answer
 // step 5 loop operator and number until satisfied
 
