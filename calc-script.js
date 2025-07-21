@@ -127,7 +127,7 @@ dotButton.addEventListener("click", () => {
         }
     }
 })
-// add backspace, as undo last input "delete last number"
+// add backspace, as undo last input "delete last number" -- DONE
 backButton.addEventListener("click", () =>{
     let currentDisplay = display.textContent;
     if (currentDisplay.length === 0) return;
@@ -158,4 +158,40 @@ backButton.addEventListener("click", () =>{
     }
 })
 
-// keyboard support
+// keyboard support -- DONE
+
+window.addEventListener("keydown", e => {
+    console.log("Pressed key:", e.key);
+    const key = e.key;
+    if (e.key === "1") {document.querySelector("#one")?.click();
+    } if (e.key === "2") {document.querySelector("#two")?.click();
+    } if (e.key === "3") {document.querySelector("#three")?.click();
+    } if (e.key === "4") {document.querySelector("#four")?.click();
+    } if (e.key === "5") {document.querySelector("#five")?.click();
+    } if (e.key === "6") {document.querySelector("#six")?.click();
+    } if (e.key === "7") {document.querySelector("#seven")?.click();
+    } if (e.key === "8") {document.querySelector("#eight")?.click();
+    } if (e.key === "9") {document.querySelector("#nine")?.click();
+    } if (e.key === "0") {document.querySelector("#zero")?.click();
+}
+});
+
+//operators
+window.addEventListener("keydown", e => {
+    const key = e.key;
+    if (e.key === "-") {document.querySelector("#subtraction")?.click();
+    } if (e.key === "+" || (e.key === "=" && e.altKey)) {document.querySelector("#add")?.click();
+    } if (e.key === "*" || (e.key === "8" && e.altKey)) {document.querySelector("#multiply")?.click();
+    } if (e.key === "/") {document.querySelector("#divide")?.click();
+    }
+});
+
+//equal && backspace && clean && dot
+window.addEventListener("keydown", e => {
+    const key = e.key;
+    if (e.key === "Enter") {document.querySelector("#equal")?.click();
+    } if (e.key === "Backspace") {document.querySelector("#backspace")?.click();
+    } if (e.key === "Escape") {document.querySelector("#CLEAN")?.click();
+    } if (e.key === ".") {document.querySelector("#dot")?.click();
+    }
+});
