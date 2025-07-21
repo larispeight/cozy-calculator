@@ -1,0 +1,26 @@
+//  // pseudocode
+// step 1 enter a number + display
+const numberButton= document.querySelectorAll("number");
+
+
+// step 2 enter operator
+// step 3 enter second number + display
+// step 4 equal sign closes loop + display final answer
+// step 5 loop operator and number until satisfied
+
+
+
+
+
+// // extra after normal operations
+// round up long decimals
+// debug to "equal" before function end, give error saying to add more operations or number
+// pressing "clear" wipe everything and go back to beginning of loop
+// dividing by 0 = error
+// make sure when "++" is clicked doesn't get added up as the function ++
+// after "equal", when clicking a number means "clear"
+
+// // extra extra
+// make sure you can only add "." once between numbers
+// add backspace, as undo last input "delete last number"
+// keyboard support
