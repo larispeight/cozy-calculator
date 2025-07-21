@@ -19,7 +19,7 @@ numberButton.forEach(button =>{
                 display.textContent= "";
                 calculationDone = false;
             } //
-            
+
             display.textContent += button.innerText;
         })
     });
@@ -38,8 +38,15 @@ operatorButtons.forEach(button => {
 // step 3 enter second number + display -- DONE
 equalButton.addEventListener("click", () => {
     secondOperand = display.textContent;
+
     const num1= parseFloat(firstOperand);
     const num2= parseFloat(secondOperand);
+
+    if (isNaN(num1) || isNaN(num2)) {
+        alert("Something went wrong!")
+        display.textContent = "";
+        return;
+    }
 
     if (operator === "+") {
         result = num1 + num2;
@@ -49,9 +56,14 @@ equalButton.addEventListener("click", () => {
         result = num1 * num2
     } else if (operator === "/") {
         if (num2 === 0) {
-            result = alert("Can't divide by 0!")
+            alert("Can't divide by 0!");
+            display.textContent = "";
+            return;
         } else {result = num1 / num2}
     }
+    
+    result = Math.round(result * 100) / 100;
+    
     display.textContent = result;
 
     calculationDone = true;
@@ -60,7 +72,7 @@ equalButton.addEventListener("click", () => {
 // step 5 loop operator and number until satisfied -- DONE
 
 // // extra after normal operations
-// round up long decimals
+// round up long decimals -- DONE
 // debug to "equal" before function end, give error saying to add more operations or number
 // pressing "clear" wipe everything and go back to beginning of loop
 // dividing by 0 = error
