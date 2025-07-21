@@ -1,4 +1,11 @@
 //  // pseudocode
+// query area
+const numberButton= document.querySelectorAll(".number");
+const display = document.querySelector(".visor p")
+const operatorButtons = document.querySelectorAll(".operators button")
+let firstOperand = "";
+let operator = "";
+
 // step 1 enter a number + display
 const numberButton= document.querySelectorAll("number");
 
