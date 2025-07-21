@@ -29,9 +29,22 @@ numberButton.forEach(button =>{
 // step 2 enter operator -- DONE
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
-        firstOperand = display.textContent;
+        const currentDisplay = display.textContent.trim();
+
+        if(currentDisplay === ""){
+            return;
+        }
+
+        const lastChar = currentDisplay[currentDisplay.length-1];
+        const operators = ["+","-","/","*"];
+        
+        if (operators.includes(lastChar)){
+            return;
+        }
+
+        firstOperand = currentDisplay;
         operator = button.innerText;
-        display.textContent = " ";
+        display.textContent = "";
     })
 });
 
