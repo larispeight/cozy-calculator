@@ -8,18 +8,24 @@ let firstOperand = "";
 let secondOperand = "";
 let operator = "";
 let result = "";
+let calculationDone = false;
 
 
-// step 1 enter a number + display
+// step 1 enter a number + display -- DONE
 
 numberButton.forEach(button =>{
         button.addEventListener("click", () => {
+            if (calculationDone){
+                display.textContent= "";
+                calculationDone = false;
+            } //
+            
             display.textContent += button.innerText;
         })
     });
 
 
-// step 2 enter operator
+// step 2 enter operator -- DONE
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         firstOperand = display.textContent;
@@ -29,7 +35,7 @@ operatorButtons.forEach(button => {
 });
 
 
-// step 3 enter second number + display
+// step 3 enter second number + display -- DONE
 equalButton.addEventListener("click", () => {
     secondOperand = display.textContent;
     const num1= parseFloat(firstOperand);
@@ -48,14 +54,10 @@ equalButton.addEventListener("click", () => {
     }
     display.textContent = result;
 
+    calculationDone = true;
 })
-
-// step 4 equal sign closes loop + display final answer
-// step 5 loop operator and number until satisfied
-
-
-
-
+// step 4 equal sign closes loop + display final answer -- DONE
+// step 5 loop operator and number until satisfied -- DONE
 
 // // extra after normal operations
 // round up long decimals
