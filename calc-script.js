@@ -130,12 +130,31 @@ dotButton.addEventListener("click", () => {
 // add backspace, as undo last input "delete last number"
 backButton.addEventListener("click", () =>{
     let currentDisplay = display.textContent;
-    let newText = currentDisplay.slice(0,-1);
+    if (currentDisplay.length === 0) return;
 
+    const lastChar = currentDisplay[currentDisplay.length - 1];
+    const operators = ["+", "-", "*", "/"];
+
+    //slice
+    let newText = currentDisplay.slice(0,-1);
     display.textContent = newText;
 
-    if(!newText.includes(operator)){
-        operator= "";
+    if (operator.includes(lastChar)){
+        operator = "";
+        secondOperand ="";
+    } else {
+        if (operator === "") {
+            firstOperan = newText;
+        } else {
+            secondOperand = newText.split(operator)[1] || "";
+        }
+    }
+
+    if (newText === ""){
+        firstOperand= ""
+        secondOperand= ""
+        operator= ""
+        calculationDone = false;
     }
 })
 
