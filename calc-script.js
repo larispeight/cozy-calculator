@@ -4,6 +4,7 @@ const numberButton= document.querySelectorAll(".number");
 const display = document.querySelector(".visor p")
 const operatorButtons = document.querySelectorAll(".operators button")
 const equalButton = document.querySelector("#equal")
+const cleanButton = document.querySelector("#CLEAN");
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
@@ -73,9 +74,16 @@ equalButton.addEventListener("click", () => {
 
 // // extra after normal operations
 // round up long decimals -- DONE
-// debug to "equal" before function end, give error saying to add more operations or number
+// debug to "equal" before function end, give error saying to add more operations or number -- DONE
 // pressing "clear" wipe everything and go back to beginning of loop
-// dividing by 0 = error
+cleanButton.addEventListener("click", () =>{
+    firstOperand = "";
+    secondOperand ="";
+    operator="";
+    calculationDone = false;
+    display.textContent = "";
+})
+// dividing by 0 = error -- DONE
 // make sure when "++" is clicked doesn't get added up as the function ++
 // after "equal", when clicking a number means "clear"
 
