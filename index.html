@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- general & visor -->
-    <div class="background">
+    <div class="background" id="background">
     <div class="visor">
         <p></p>
     </div>
@@ -59,8 +59,8 @@
 
 <div class="menu">
     <div class="zoom">
-        <button id="zoom-in">Zoom In</button>
-        <button id="zoom-out">Zoom Out</button>
+        <button onclick="zoomIn()" id="zoom-in">Zoom In</button>
+        <button onclick="zoomOut()" id="zoom-out">Zoom Out</button>
     </div>
     <label class="switch">
         <input type="checkbox">
@@ -69,5 +69,6 @@
 </div>
 <!-- script -->
  <script type="module" src="./calc-script.js"></script>
+ <script src="./menu-script.js"></script>
 </body>
 </html>
