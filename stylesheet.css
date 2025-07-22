@@ -3,7 +3,11 @@
 
 /* general & body config */
 
-body{
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+div.glass{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +22,6 @@ body{
 button {
     padding:18px;
     display:block;
-            /* border: solid purple 1px; */
     flex:1;
     min-width: 50px;
     min-height: 50px;
@@ -27,13 +30,11 @@ button {
 }
 
 div.background {
-    /* background-color: #ffcccc; */
     display: flex;
-    flex:1;
+    flex:0;
     max-width: fit-content;
     flex-direction: column;
         /* border: dashed red 1px; */
-    margin-top: 2em;
     padding: 2em;
     align-items: center;
     gap: 24px;
@@ -44,7 +45,8 @@ div.menu {
     gap:8px;
     justify-content: space-evenly;
     align-items: center;
-    flex:1;
+    flex:0;
+    /* border: solid red 1px; */
 }
 
 /* visor and name */
@@ -59,9 +61,9 @@ h1#name{
 
 div.visor {
         /* border: solid purple 1px; */
-    min-width: 250px;
+    width: 250px;
     min-height: 55px;
-    max-width: 250px;
+    max-height: 55px;
     flex:1;
     align-content: center;
     text-align: center;
@@ -147,14 +149,31 @@ div.operators{
 /* style */
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    background-image: url(./picture/masaaki-komori-NoXUQ54pDac-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin:0;
+    padding:0;
+}
+
+div.glass {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 0;
 }
 
 /* background */
 div.background {
-    background-color: #ffecec;
+    background: linear-gradient(125deg, #ffecec 0%, #fcdcdc 100%);
     border-radius: 1em;
     box-shadow: 0 4px 12px 0 #3F3F5F;
+    position: relative;
+    z-index: 1;
 }
 
 /* visor */
@@ -296,11 +315,12 @@ input:checked + .slider:before {
 }
 
 /* night-mode */
-body.night-mode {
-  background-color: #1b1b27;
-  color: #ffecec;
+body.night-mode .glass {
+  background: rgba(34, 17, 31, 0.8);
 }
 
 body.night-mode .background {
-  background-color: #ba9eb5;
+    background: linear-gradient(125deg, #dcd0d9 0%, #ba9eb5 100%);
 }
+
+
