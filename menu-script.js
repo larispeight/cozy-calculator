@@ -1,3 +1,4 @@
+// zoom
 let zoomLevel =1;
 
 const target = document.querySelector(".background");
@@ -16,3 +17,11 @@ function zoomOut() {
 function updateZoom() {
   target.style.zoom = zoomLevel;
 }
+
+
+// night-mode
+const toggle = document.getElementById("checkbox")
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("night-mode");
+});

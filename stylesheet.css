@@ -12,6 +12,7 @@ body{
     padding-right:3em;
     gap: 16px;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button {
@@ -292,4 +293,14 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* night-mode */
+body.night-mode {
+  background-color: #1b1b27;
+  color: #ffecec;
+}
+
+body.night-mode .background {
+  background-color: #ba9eb5;
 }
