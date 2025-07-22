@@ -1,4 +1,3 @@
-//  // pseudocode
 // query area
 const numberButton= document.querySelectorAll(".number");
 const display = document.querySelector(".visor p")
@@ -14,9 +13,7 @@ let operator = "";
 let result = "";
 let calculationDone = false;
 
-
-// step 1 enter a number + display -- DONE
-
+//Calculations
 numberButton.forEach(button =>{
         button.addEventListener("click", () => {
             if (calculationDone){
@@ -29,7 +26,6 @@ numberButton.forEach(button =>{
     });
 
 
-// step 2 enter operator -- DONE
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         const currentDisplay = display.textContent.trim();
@@ -52,7 +48,24 @@ operatorButtons.forEach(button => {
 });
 
 
-// step 3 enter second number + display -- DONE
+dotButton.addEventListener("click", () => {
+    const currentDisplay = display.textContent;
+
+    if (!operator){
+        if (!currentDisplay.includes(".")){
+            display.textContent += ".";
+        }
+    } else {
+        const parts = currentDisplay.split(operator);
+        const secondOperand = parts[1] || "";
+        
+        if (!secondOperand.includes(".")){
+            display.textContent += ".";
+        }
+    }
+})
+
+
 equalButton.addEventListener("click", () => {
     if (calculationDone){
         firstOperand = display.textContent;
@@ -91,13 +104,9 @@ equalButton.addEventListener("click", () => {
 
     calculationDone = true;
 })
-// step 4 equal sign closes loop + display final answer -- DONE
-// step 5 loop operator and number until satisfied -- DONE
 
-// // extra after normal operations
-// round up long decimals -- DONE
-// debug to "equal" before function end, give error saying to add more operations or number -- DONE
-// pressing "clear" wipe everything and go back to beginning of loop
+//Clean button
+
 cleanButton.addEventListener("click", () =>{
     firstOperand = "";
     secondOperand ="";
@@ -105,37 +114,16 @@ cleanButton.addEventListener("click", () =>{
     calculationDone = false;
     display.textContent = "";
 })
-// dividing by 0 = error -- DONE
-// make sure when "++" is clicked doesn't get added up as the function ++ -- DONE
-// after "equal", when clicking a number means "clear" -- DONE
 
-// // extra extra
-// make sure you can only add "." once between numbers -- DONE
-dotButton.addEventListener("click", () => {
-    const currentDisplay = display.textContent;
+//Backspace button
 
-    if (!operator){
-        if (!currentDisplay.includes(".")){
-            display.textContent += ".";
-        }
-    } else {
-        const parts = currentDisplay.split(operator);
-        const secondOperand = parts[1] || "";
-        
-        if (!secondOperand.includes(".")){
-            display.textContent += ".";
-        }
-    }
-})
-// add backspace, as undo last input "delete last number" -- DONE
 backButton.addEventListener("click", () =>{
     let currentDisplay = display.textContent;
     if (currentDisplay.length === 0) return;
 
     const lastChar = currentDisplay[currentDisplay.length - 1];
     const operators = ["+", "-", "*", "/"];
-
-    //slice
+    
     let newText = currentDisplay.slice(0,-1);
     display.textContent = newText;
 
@@ -158,7 +146,7 @@ backButton.addEventListener("click", () =>{
     }
 })
 
-// keyboard support -- DONE
+// keyboard support
 
 window.addEventListener("keydown", e => {
     console.log("Pressed key:", e.key);
@@ -176,7 +164,7 @@ window.addEventListener("keydown", e => {
 }
 });
 
-//operators
+
 window.addEventListener("keydown", e => {
     const key = e.key;
     if (e.key === "-") {document.querySelector("#subtraction")?.click();
@@ -186,7 +174,7 @@ window.addEventListener("keydown", e => {
     }
 });
 
-//equal && backspace && clean && dot
+
 window.addEventListener("keydown", e => {
     const key = e.key;
     if (e.key === "Enter") {document.querySelector("#equal")?.click();
