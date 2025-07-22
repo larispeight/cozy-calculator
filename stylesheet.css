@@ -43,6 +43,7 @@ div.menu {
     gap:8px;
     justify-content: space-evenly;
     align-items: center;
+    flex:1;
 }
 
 /* visor and name */
@@ -219,13 +220,11 @@ div.zoom {
     /* border:red solid 1em; */
     display: flex;
     flex:0;
-    /* margin: 8px; */
     gap:8px;
     flex-basis: auto;
 }
 
 div.zoom button {
-    /* min-width: fit-content; */
     font-size: x-small;
     min-width: 90px;
     min-height: 40px;
