@@ -1,4 +1,4 @@
-# ☕ Cozy Calculator  
+# Cozy & Floral Calculator 🌸
 A simple, warm calculator project built with HTML, CSS, and JavaScript — made as part of my JavaScript learning journey through [The Odin Project](https://www.theodinproject.com/).
 I wanted to make something that feels soft, rounded, and inviting. Nobody wants a boring calculator.
 
@@ -20,7 +20,7 @@ I’m also exploring how to bring my personality into technical projects.
 
 ---
 
-## 📚 To-do list
+### 📚 To-do list
 
 - Understand more accessibility
 - Adding sound feedback
