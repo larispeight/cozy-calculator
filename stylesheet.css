@@ -15,10 +15,7 @@ div.glass{
     padding-left:3em;
     padding-right:3em;
     gap: 16px;
-    flex-direction: column;
-    transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100dvh;
-    
 }
 
 button {
@@ -31,24 +28,42 @@ button {
     line-height: 0px;
 }
 
-div.background {
+/* History tab */
+div.right {
+    border:#1b1b27 solid;
+}
+
+/* Calculator tab */
+
+div.left {
+            border: dashed red 1px;
     display: flex;
     flex:0;
     max-width: fit-content;
     flex-direction: column;
-        /* border: dashed red 1px; */
+    padding: 2em;
+    align-items: center;
+    gap: 24px;
+}
+
+div.background {
+    border:darkblue solid 1px;
+    display:flex;
+    flex:0;
+    max-width: fit-content;
+    flex-direction: column;
     padding: 2em;
     align-items: center;
     gap: 24px;
 }
 
 div.menu {
+        border: solid red 1px;
     display: flex;
     gap:8px;
     justify-content: space-evenly;
     align-items: center;
     flex:0;
-    /* border: solid red 1px; */
 }
 
 /* visor and name */
@@ -79,7 +94,7 @@ div.visor p {
     padding-right:1em;
 }
 
-/* corpo of calculator */
+/* body of calculator */
 
 div.corpo {
         /* border: solid red 3px; */
@@ -101,7 +116,7 @@ div.bottom-row {
     gap:12px;
 }
 
-/* left column */
+/* left column body */
 div.left-column{
         /* border:green dashed 1px; */
     align-content: flex-start;
@@ -136,7 +151,7 @@ div.forth {
     gap:12px;
 }
 
-/* right column */
+/* right column body */
 
 div.operators{
     display: flex;
@@ -146,7 +161,6 @@ div.operators{
     gap:12px;
     justify-content: space-between;
 }
-
 
 /* style */
 
@@ -165,6 +179,7 @@ div.glass {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(12px);
+    transition: background-color 0.3s ease, color 0.3s ease;
     z-index: 0;
 }
 
