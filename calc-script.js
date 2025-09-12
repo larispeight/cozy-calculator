@@ -15,6 +15,37 @@ let result = "";
 let calculationDone = false;
 
 //Calculations
+function formatResult(res) {
+    if (res === null || res === undefined) return "";
+
+    // Convert to plain string, no scientific notation
+    let str = res.toString();
+
+    // Remove decimal point for digit length check
+    const digitCount = str.replace(".", "").replace("-", "").length;
+
+    // 🚨 Check if result has more than 11 digits
+    if (digitCount > 11) {
+        alert("Result exceeds 11 digits. Look for a real calculator.");
+        return "Oops";
+    }
+
+    // If decimal exists
+    if (str.includes(".")) {
+        const [intPart, decPart] = str.split(".");
+
+        if (intPart.length >= 10) {
+            return intPart.slice(0, 10); // cut off extra
+        } else {
+            const allowedDecimals = 10 - intPart.length;
+            return intPart + "." + decPart.slice(0, allowedDecimals);
+        }
+    } else {
+        // No decimal, just cut to 10 digits
+        return str.slice(0, 10);
+    }
+}
+
 function calculateResult(num1, num2, op) {
     let res;
     switch(op) {
@@ -39,6 +70,10 @@ numberButtons.forEach(button => {
             display.textContent = "";
             calculationDone = false;
         }
+
+        // Prevent typing beyond 10 digits (ignores ".")
+        if (display.textContent.replace(".", "").length >= 10) return;
+
         display.textContent += button.innerText;
     });
 });
@@ -82,6 +117,7 @@ equalButton.addEventListener("click", () => {
     const secondOperandValue = display.textContent.trim();
     const num1 = parseFloat(firstOperand);
     const num2 = parseFloat(secondOperandValue);
+
     if (isNaN(num1) || isNaN(num2)) {
         alert("Something went wrong!");
         return;
@@ -90,15 +126,17 @@ equalButton.addEventListener("click", () => {
     const res = calculateResult(num1, num2, operator);
     if (res === null) return;
 
-    display.textContent = res;
-    
-    // Log
+    const formattedRes = formatResult(res);
+    const formattedNum1 = formatResult(num1);
+    const formattedNum2 = formatResult(num2);
+
+    display.textContent = formattedRes;
+
     const logItem = document.createElement("li");
-    logItem.textContent = `${num1} ${operator} ${num2} = ${res}`;
+    logItem.textContent = `${formattedNum1} ${operator} ${formattedNum2} = ${formattedRes}`;
     logList.prepend(logItem);
     if (logList.children.length > 20) logList.removeChild(logList.lastChild);
 
-    // Prepare for chaining
     firstOperand = res.toString();
     operator = "";
     calculationDone = true;
