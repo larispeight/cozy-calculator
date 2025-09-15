@@ -30,7 +30,7 @@ button {
 
 /* History tab */
 div.right {
-    border:#1b1b27 solid;
+    /* border:#1b1b27 solid; */
     display: flex;
     flex-direction: column;
     padding: 2em;
@@ -82,7 +82,7 @@ body.visor-open #visorRight {
 /* Calculator tab */
 
 div.left {
-            border: dashed red 1px;
+            /* border: dashed red 1px; */
     display: flex;
     flex:0;
     max-width: fit-content;
@@ -93,7 +93,7 @@ div.left {
 }
 
 div.background {
-    border:darkblue solid 1px;
+    /* border:darkblue solid 1px; */
     display:flex;
     flex:0;
     max-width: fit-content;
@@ -104,7 +104,7 @@ div.background {
 }
 
 div.menu {
-        border: solid red 1px;
+        /* border: solid red 1px; */
     display: flex;
     gap:8px;
     justify-content: space-evenly;
