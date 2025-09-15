@@ -14,6 +14,14 @@ let operator = "";
 let result = "";
 let calculationDone = false;
 
+// error message
+function showError(message) {
+    display.textContent = message;
+    display.classList.add("visor-error"); //"<p class=visor-error></p>"
+    display.setAttribute("aria-live", "assertive");
+    setTimeout(() => display.classList.remove("visor-error"), 800);
+}
+
 //Calculations
 function formatResult(res) {
     if (res === null || res === undefined) return "";
@@ -22,8 +30,8 @@ function formatResult(res) {
 
     // limiting 11 digits
     if (digitCount > 11) {
-        alert("Result exceeds 11 digits. Look for a real calculator.");
-        return "Oops";
+        showError("Go get a real calculator!");
+        return "Go get a real calculator!";
     }
 
     // If decimal exists
@@ -31,7 +39,7 @@ function formatResult(res) {
         const [intPart, decPart] = str.split(".");
 
         if (intPart.length >= 10) {
-            return intPart.slice(0, 10); // cut off extra
+            return intPart.slice(0, 10); 
         } else {
             const allowedDecimals = 10 - intPart.length;
             return intPart + "." + decPart.slice(0, allowedDecimals);
@@ -49,8 +57,7 @@ function calculateResult(num1, num2, op) {
         case "*": case "x": res = num1 * num2; break;
         case "/": 
             if (num2 === 0) {
-                alert("Can't divide by 0!");
-                return null;
+                return "Can't divide by 0!";
             }
             res = num1 / num2; break;
         default: return null;
@@ -110,18 +117,36 @@ equalButton.addEventListener("click", () => {
     const num2 = parseFloat(secondOperandValue);
 
     if (isNaN(num1) || isNaN(num2)) {
-        alert("Something went wrong!");
+        showError("Invalid input!");
         return;
     }
 
     const res = calculateResult(num1, num2, operator);
-    if (res === null) return;
 
-    const formattedRes = formatResult(res);
+    if (typeof res==="string") {
+        showError(res);
+        const logItem = document.createElement("li");
+        logItem.textContent = `${num1} ${operator} ${num2} = Error!`
+        logList.prepend(logItem);
+        if(logList.children.length>20) logList.removeChild(logList.lastChild)
+        return;
+    }
+
+    const formattedRes =formatResult(res);
+    
+    if (formattedRes === "Go get a real calculator!") {
+        showError(formattedRes);
+
+        const logItem = document.createElement("li");
+        logItem.textContent = `${num1} ${operator} ${num2} = Error!`;
+        logList.prepend(logItem);
+        if (logList.children.length > 20) logList.removeChild(logList.lastChild);
+        return;
+    }
+    display.textContent = formattedRes;
+
     const formattedNum1 = formatResult(num1);
     const formattedNum2 = formatResult(num2);
-
-    display.textContent = formattedRes;
 
     const logItem = document.createElement("li");
     logItem.textContent = `${formattedNum1} ${operator} ${formattedNum2} = ${formattedRes}`;
