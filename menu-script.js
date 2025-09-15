@@ -26,11 +26,16 @@ toggle.addEventListener("click", () => {
 });
 
 // Log Tab
-const visorToggleBtn = document.getElementById('toggleLog');
+  const visorToggleBtn = document.getElementById('toggleLog');
+  const visorRight = document.getElementById('visorRight');
 
 visorToggleBtn.addEventListener('click', () => {
+    const isOpen = visorToggleBtn.getAttribute('aria-expanded') === 'true';
+      visorToggleBtn.setAttribute('aria-expanded', !isOpen);
+      visorRight.hidden = isOpen;
   document.body.classList.toggle('visor-open'); 
-  visorToggleBtn.textContent = document.body.classList.contains('visor-open') 
-      ? 'Hide Log' 
-      : 'Log Tab';
+visorToggleBtn.textContent = !isOpen ? 'Hide Log' : 'Log Tab';
+if (!isOpen) {
+        visorRight.querySelector('#logList')?.focus();
+    }
 });
