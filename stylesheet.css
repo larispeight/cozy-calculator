@@ -34,8 +34,8 @@ div.right {
     display: flex;
     flex-direction: column;
     padding: 2em;
-    height: 450px;
-    width: 350px;
+    height: 580px;
+    width: 310px;
     gap:16px;
     align-items: center;
 }

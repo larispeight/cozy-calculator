@@ -17,14 +17,10 @@ let calculationDone = false;
 //Calculations
 function formatResult(res) {
     if (res === null || res === undefined) return "";
-
-    // Convert to plain string, no scientific notation
     let str = res.toString();
-
-    // Remove decimal point for digit length check
     const digitCount = str.replace(".", "").replace("-", "").length;
 
-    // 🚨 Check if result has more than 11 digits
+    // limiting 11 digits
     if (digitCount > 11) {
         alert("Result exceeds 11 digits. Look for a real calculator.");
         return "Oops";
@@ -41,7 +37,6 @@ function formatResult(res) {
             return intPart + "." + decPart.slice(0, allowedDecimals);
         }
     } else {
-        // No decimal, just cut to 10 digits
         return str.slice(0, 10);
     }
 }
@@ -60,39 +55,36 @@ function calculateResult(num1, num2, op) {
             res = num1 / num2; break;
         default: return null;
     }
-    return Math.round(res * 1000) / 1000; // round to 3 decimals
+    return Math.round(res * 1000) / 1000;
 }
 
-// --- Number buttons ---
+// numbers limit
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
         if (calculationDone) {
             display.textContent = "";
             calculationDone = false;
         }
-
-        // Prevent typing beyond 10 digits (ignores ".")
         if (display.textContent.replace(".", "").length >= 10) return;
 
         display.textContent += button.innerText;
     });
 });
 
-// --- Dot button ---
+//dot
 dotButton.addEventListener("click", () => {
     if (!display.textContent.includes(".")) {
         display.textContent += ".";
     }
 });
 
-// --- Operator buttons ---
+//operator
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         const currentDisplay = display.textContent.trim();
         if (!currentDisplay) return;
 
         if (firstOperand && operator && !calculationDone) {
-            // Chaining: calculate intermediate result
             const num1 = parseFloat(firstOperand);
             const num2 = parseFloat(currentDisplay);
             const res = calculateResult(num1, num2, operator);
@@ -100,7 +92,6 @@ operatorButtons.forEach(button => {
             firstOperand = res.toString();
             display.textContent = firstOperand;
         } else if (calculationDone) {
-            // Start new chain after = 
             calculationDone = false;
         } else {
             firstOperand = currentDisplay;
@@ -111,7 +102,7 @@ operatorButtons.forEach(button => {
     });
 });
 
-// --- Equal button ---
+// Result
 equalButton.addEventListener("click", () => {
     if (!operator) return;
     const secondOperandValue = display.textContent.trim();
@@ -142,7 +133,7 @@ equalButton.addEventListener("click", () => {
     calculationDone = true;
 });
 
-// --- Clean button ---
+//Clean button ---
 cleanButton.addEventListener("click", () => {
     firstOperand = "";
     secondOperand = "";
@@ -151,7 +142,7 @@ cleanButton.addEventListener("click", () => {
     display.textContent = "";
 });
 
-// --- Backspace button ---
+// Backspace button ---
 backButton.addEventListener("click", () => {
     let currentDisplay = display.textContent;
     if (!currentDisplay) return;
