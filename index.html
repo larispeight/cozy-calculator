@@ -13,8 +13,9 @@
 <body>
     <div class="glass">
     <!-- general & visor -->
+     <div class="left">
     <div class="background" id="background">
-    <div class="visor">
+    <div class="visor" role="alert" aria-live="polite">
         <p></p>
     </div>
 
@@ -65,12 +66,28 @@
     </div>
     <label class="switch">
         <input type="checkbox" id="checkbox">
-        <span class="slider round"></span>
+        <span class="slider round" aria-label="Night Mode"></span>
     </label>
 </div>
 </div>
+<!-- Log tab -->
+<div class="right">
+        <button id="toggleLog" aria-expanded="false" aria-controls="visorRight">Log Tab</button>
+        <div id="visorRight" hidden>
+            <h3>Calculation Log</h3>
+            <ul id="logList">
+<!-- log list -->
+            </ul>
+        </div>
+</div>
+
+</div>
+<!-- audio -->
+  <audio id="click-ui" src="sound/select-button-ui.mp3"></audio>
 <!-- script -->
  <script type="module" src="./calc-script.js"></script>
  <script src="./menu-script.js"></script>
+ <script src="./sounds.js"></script>
+ 
 </body>
 </html>

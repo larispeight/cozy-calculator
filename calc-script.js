@@ -1,11 +1,12 @@
 // query area
-const numberButton= document.querySelectorAll(".number");
+const numberButtons= document.querySelectorAll(".number");
 const display = document.querySelector(".visor p")
 const operatorButtons = document.querySelectorAll(".operators button")
 const equalButton = document.querySelector("#equal")
 const cleanButton = document.querySelector("#CLEAN");
 const dotButton = document.querySelector("#dot");
 const backButton = document.querySelector("#backspace");
+const logList = document.getElementById("logList");
 
 let firstOperand = "";
 let secondOperand = "";
@@ -13,139 +14,183 @@ let operator = "";
 let result = "";
 let calculationDone = false;
 
+// error message
+function showError(message) {
+    display.textContent = message;
+    display.classList.add("visor-error"); //"<p class=visor-error></p>"
+    display.setAttribute("aria-live", "assertive");
+    setTimeout(() => display.classList.remove("visor-error"), 800);
+}
+
 //Calculations
-numberButton.forEach(button =>{
-        button.addEventListener("click", () => {
-            if (calculationDone){
-                display.textContent= "";
-                calculationDone = false;
+function formatResult(res) {
+    if (res === null || res === undefined) return "";
+    let str = res.toString();
+    const digitCount = str.replace(".", "").replace("-", "").length;
+
+    // limiting 11 digits
+    if (digitCount > 11) {
+        showError("Go get a real calculator!");
+        return "Go get a real calculator!";
+    }
+
+    // If decimal exists
+    if (str.includes(".")) {
+        const [intPart, decPart] = str.split(".");
+
+        if (intPart.length >= 10) {
+            return intPart.slice(0, 10); 
+        } else {
+            const allowedDecimals = 10 - intPart.length;
+            return intPart + "." + decPart.slice(0, allowedDecimals);
+        }
+    } else {
+        return str.slice(0, 10);
+    }
+}
+
+function calculateResult(num1, num2, op) {
+    let res;
+    switch(op) {
+        case "+": res = num1 + num2; break;
+        case "-": res = num1 - num2; break;
+        case "*": case "x": res = num1 * num2; break;
+        case "/": 
+            if (num2 === 0) {
+                return "Can't divide by 0!";
             }
+            res = num1 / num2; break;
+        default: return null;
+    }
+    return Math.round(res * 1000) / 1000;
+}
 
-            display.textContent += button.innerText;
-        })
+// numbers limit
+numberButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (calculationDone) {
+            display.textContent = "";
+            calculationDone = false;
+        }
+        if (display.textContent.replace(".", "").length >= 10) return;
+
+        display.textContent += button.innerText;
     });
+});
 
+//dot
+dotButton.addEventListener("click", () => {
+    if (!display.textContent.includes(".")) {
+        display.textContent += ".";
+    }
+});
 
+//operator
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         const currentDisplay = display.textContent.trim();
+        if (!currentDisplay) return;
 
-        if(currentDisplay === ""){
-            return;
+        if (firstOperand && operator && !calculationDone) {
+            const num1 = parseFloat(firstOperand);
+            const num2 = parseFloat(currentDisplay);
+            const res = calculateResult(num1, num2, operator);
+            if (res === null) return;
+            firstOperand = res.toString();
+            display.textContent = firstOperand;
+        } else if (calculationDone) {
+            calculationDone = false;
+        } else {
+            firstOperand = currentDisplay;
         }
 
-        const lastChar = currentDisplay[currentDisplay.length-1];
-        const operators = ["+","-","/","*"];
-        
-        if (operators.includes(lastChar)){
-            return;
-        }
-
-        firstOperand = currentDisplay;
         operator = button.innerText;
         display.textContent = "";
-    })
+    });
 });
 
-
-dotButton.addEventListener("click", () => {
-    const currentDisplay = display.textContent;
-
-    if (!operator){
-        if (!currentDisplay.includes(".")){
-            display.textContent += ".";
-        }
-    } else {
-        const parts = currentDisplay.split(operator);
-        const secondOperand = parts[1] || "";
-        
-        if (!secondOperand.includes(".")){
-            display.textContent += ".";
-        }
-    }
-})
-
-
+// Result
 equalButton.addEventListener("click", () => {
-    if (calculationDone){
-        firstOperand = display.textContent;
-    } else {
-        secondOperand = display.textContent.trim();
-    }
-
-    const num1= parseFloat(firstOperand);
-    const num2= parseFloat(secondOperand);
+    if (!operator) return;
+    const secondOperandValue = display.textContent.trim();
+    const num1 = parseFloat(firstOperand);
+    const num2 = parseFloat(secondOperandValue);
 
     if (isNaN(num1) || isNaN(num2)) {
-        alert("Something went wrong!")
-        display.textContent = "";
+        showError("Invalid input!");
         return;
     }
 
-    if (operator === "+") {
-        result = num1 + num2;
-    } else if (operator === "-") {
-        result = num1 - num2
-    } else if (operator === "*" || operator === "x") {
-        result = num1 * num2
-    } else if (operator === "/") {
-        if (num2 === 0) {
-            alert("Can't divide by 0!");
-            display.textContent = "";
-            return;
-        } else {result = num1 / num2}
+    const res = calculateResult(num1, num2, operator);
+
+    if (typeof res==="string") {
+        showError(res);
+        const logItem = document.createElement("li");
+        logItem.textContent = `${num1} ${operator} ${num2} = Error!`
+        logList.prepend(logItem);
+        if(logList.children.length>20) logList.removeChild(logList.lastChild)
+        return;
     }
-    
-    result = Math.round(result * 100) / 100;
-    
-    display.textContent = result;
 
-    firstOperand= result.toString();
+    const formattedRes =formatResult(res);
+    
+    if (formattedRes === "Go get a real calculator!") {
+        showError(formattedRes);
 
+        const logItem = document.createElement("li");
+        logItem.textContent = `${num1} ${operator} ${num2} = Error!`;
+        logList.prepend(logItem);
+        if (logList.children.length > 20) logList.removeChild(logList.lastChild);
+        return;
+    }
+    display.textContent = formattedRes;
+
+    const formattedNum1 = formatResult(num1);
+    const formattedNum2 = formatResult(num2);
+
+    const logItem = document.createElement("li");
+    logItem.textContent = `${formattedNum1} ${operator} ${formattedNum2} = ${formattedRes}`;
+    logList.prepend(logItem);
+    if (logList.children.length > 20) logList.removeChild(logList.lastChild);
+
+    firstOperand = res.toString();
+    operator = "";
     calculationDone = true;
-})
+});
 
-//Clean button
-
-cleanButton.addEventListener("click", () =>{
+//Clean button ---
+cleanButton.addEventListener("click", () => {
     firstOperand = "";
-    secondOperand ="";
-    operator="";
+    secondOperand = "";
+    operator = "";
     calculationDone = false;
     display.textContent = "";
-})
+});
 
-//Backspace button
-
-backButton.addEventListener("click", () =>{
+// Backspace button ---
+backButton.addEventListener("click", () => {
     let currentDisplay = display.textContent;
-    if (currentDisplay.length === 0) return;
+    if (!currentDisplay) return;
 
-    const lastChar = currentDisplay[currentDisplay.length - 1];
-    const operators = ["+", "-", "*", "/"];
-    
-    let newText = currentDisplay.slice(0,-1);
-    display.textContent = newText;
+    const lastChar = currentDisplay.slice(-1);
+    display.textContent = currentDisplay.slice(0, -1);
 
-    if (operator.includes(lastChar)){
+    if (operator && lastChar === operator) {
         operator = "";
-        secondOperand ="";
+        secondOperand = "";
+    } else if (!operator) {
+        firstOperand = display.textContent;
     } else {
-        if (operator === "") {
-            firstOperan = newText;
-        } else {
-            secondOperand = newText.split(operator)[1] || "";
-        }
+        secondOperand = display.textContent;
     }
 
-    if (newText === ""){
-        firstOperand= ""
-        secondOperand= ""
-        operator= ""
+    if (!display.textContent) {
+        firstOperand = "";
+        secondOperand = "";
+        operator = "";
         calculationDone = false;
     }
 })
-
 // keyboard support
 
 window.addEventListener("keydown", e => {
