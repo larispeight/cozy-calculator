@@ -5,25 +5,23 @@ I wanted to make something that feels soft, rounded, and inviting. Nobody wants 
 ## ✨ Features
 
 - Basic math functions: add, subtract, multiply, divide
-- Rounded and glassmorfism design with pastel colors
-- Responsive layout for desktop and mobile
+- Pastel color palette with glassmorphism & rounded edges
+- Fully responsive for desktop & mobile
 - Keyboard support for typing numbers and operators
+- Sound feedback when pressing buttons
+- Accessibility (labels, ARIA, focus states)
+- “Log” tab to view recent calculations
+- Character limit in display to prevent overflow
+- Toggle for a softer dark theme
+- Zoom In/Out controls for better visibility
 
 ---
 
 ## 🌼 Why I Made This
 
 I’m currently *trying to* deep-diving into JavaScript fundamentals and DOM manipulation, focusing on understanding how things work instead of rushing through. 
-This calculator helped me connect logic with layout, and gave me a fun space to practice code structure and event listeners.
+Building this calculator made me connect logic with layout, refine my code structure, and gain more confidence working with Javascript. For the first time I also looked into user experience by adding accessibility features, sound feedback, display limits, night mode, and zoom functionality.
 
-I’m also exploring how to bring my personality into technical projects.
-
----
-
-### 📚 To-do list
-
-- Understand more accessibility
-- Adding sound feedback
-- "Recently" tab
+Beyond the HTML/CSS/JS, I'm also exploring how to bring my personality into technical projects.
 
 ---
