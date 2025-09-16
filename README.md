@@ -25,3 +25,5 @@ Building this calculator made me connect logic with layout, refine my code struc
 Beyond the HTML/CSS/JS, I'm also exploring how to bring my personality into technical projects.
 
 ---
+## 🎨 Moodboard & Inspiration
+![Cozy & Floral Moodboard](picture/calc.png)
