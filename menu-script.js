@@ -1,22 +1,24 @@
 // zoom
 let zoomLevel =1;
 
-const target = document.querySelector(".background");
-
+const target = document.querySelector(".calculator-zoom");
+const ZOOM_MIN = 0.5;
+const ZOOM_MAX = 2;
+const ZOOM_STEP = 0.1;
 
 function zoomIn() {
-  zoomLevel += 0.1;
+  zoomLevel += ZOOM_STEP;
   updateZoom();
 }
 
 function zoomOut() {
-  zoomLevel = Math.max(0.5, zoomLevel - 0.1);
+  zoomLevel -= ZOOM_STEP;
   updateZoom();
 }
 
 function updateZoom() {
+  zoomLevel = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoomLevel));
   target.style.transform = `scale(${zoomLevel})`;
-  target.style.transformOrigin = "top center";
 }
 
 // night-mode
