@@ -10,12 +10,13 @@ function zoomIn() {
 }
 
 function zoomOut() {
-  zoomLevel -= 0.1;
+  zoomLevel = Math.max(0.5, zoomLevel - 0.1);
   updateZoom();
 }
 
 function updateZoom() {
-  target.style.zoom = zoomLevel;
+  target.style.transform = `scale(${zoomLevel})`;
+  target.style.transformOrigin = "top center";
 }
 
 // night-mode

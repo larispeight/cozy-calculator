@@ -107,6 +107,7 @@ div.left {
 div.background {
     /* border:darkblue solid 1px; */
     display:flex;
+    transition: transform 0.2s ease;
     flex:0;
     max-width: fit-content;
     flex-direction: column;
